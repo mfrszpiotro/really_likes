@@ -1,0 +1,83 @@
+.messages{
+    z-index: 998;
+    position:fixed;
+    left:0;
+}
+
+.errors{
+    z-index: 999;
+    position:fixed;
+    right:0;
+}
+
+.success {
+    padding:20px;
+    color: white;
+    margin-bottom:15px;
+    background-color: #ee3348;
+    border: 3px solid white;
+    max-width: 350px;
+    animation-duration: 1s;
+    animation-name: fromleft;
+}
+
+.error {
+    padding:20px;
+    color: white;
+    margin-bottom:15px;
+    background-color: #ee3348;
+    border: 3px solid white;
+    max-width: 350px;
+    animation-duration: 1s;
+    animation-name: fromright;
+}
+
+.closebtn-success {
+    margin-left:15px;
+    color:#37f61a;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.closebtn-success:hover {
+    color: white;
+  }
+
+.closebtn-error {
+    margin-right:15px;
+    color:black;
+    font-weight: bold;
+    float: left;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.closebtn-error:hover {
+    color: white;
+  }
+  
+@keyframes fromright {
+    from {
+      transform: translateX(600px);
+      width: 300%;
+    }
+    to {
+      transform: translateX(0px);
+      width: 100%;
+    }
+  }
+
+@keyframes fromleft {
+    from {
+      transform: translateX(-600px);
+      width: 300%;
+    }
+    to {
+      transform: translateX(0px);
+      width: 100%;
+    }
+  }
