@@ -1,36 +1,63 @@
 {% extends 'base.html' %}
 
+{% macro static_link(img) -%}
+/static/images/{{ img }}
+{%- endmacro %}
+
+{% macro api_link(img) -%}
+https://image.tmdb.org/t/p/original/{{ img }}
+{%- endmacro %}
+
 {% block navbar %}
 
 <div id="slide">
     <div class="slider-abs pt-3">
         <div class="rel pt-5">
-            <h2>Natkapp®</h2>
+            <p class="slider-title">Natkapp®</p>
         </div>
+        {% if session.get("logged", False) %}
         <div class="rel pt-4">
+            <a href="{{ url_for('logout') }}">
+                <button type="button" class="btn btn-dark slider-btn">Wyloguj się</button>
+                <button type="button" class="btn btn-dark slider-icon"><h4 class="slider-icon-txt">❌</h4></button>
+            </a>
+        </div>
+        <div class="rel pt-1">
+        {% else %}
+        <div class="rel pt-4">
+        {% endif %}
             <a href="{{ url_for('index') }}">
                 <button type="button" class="btn btn-dark slider-btn">Co Natka myśli o Kunderach?</button>
-                <button type="button" class="btn btn-dark slider-icon">&#10002</button>
+                <button type="button" class="btn btn-dark slider-icon"><h4 class="slider-icon-txt">&#10002</h4></button>
             </a>
         </div>
         <div class="rel pt-1">
             <a href="{{ url_for('booklist') }}">
                 <button type="button" class="btn btn-dark slider-btn">Pełna lista Kunderów u Natki</button>
-                <button type="button" class="btn btn-dark slider-icon">📚</button>
+                <button type="button" class="btn btn-dark slider-icon"><h4 class="slider-icon-txt">📚</h4></button>
             </a>
         </div>
         <div class="rel pt-1">
             <a href="{{ url_for('movies') }}">
                 <button type="button" class="btn btn-dark slider-btn">Co Natka myśli o filmach kunderskich?</button>
-                <button type="button" class="btn btn-dark slider-icon">🎬</button>
+                <button type="button" class="btn btn-dark slider-icon"><h4 class="slider-icon-txt">🎬</h4></button>
             </a>
         </div>
-        <div class="rel pt-1">
-            <a href="{{ url_for('login') }}">
-                <button type="button" class="btn btn-dark slider-btn">Jesteś Natką?</button>
-                <button type="button" class="btn btn-dark slider-icon">🥵</button>
-            </a>
-        </div>
+        {% if not session.get("logged", False) %}
+            <div class="rel pt-1">
+                <a href="{{ url_for('login') }}">
+                    <button type="button" class="btn btn-dark slider-btn">Jesteś Natką?</button>
+                    <button type="button" class="btn btn-dark slider-icon"><h4 class="slider-icon-txt">🥵</h4></button>
+                </a>
+            </div>
+        {% endif %}
+        {% if session.get("logged", False) %}
+            <div class="rel pt-1">
+                <button id="submitButtonText" type="submit" class="btn btn-dark slider-btn">Zapisz zmiany!</button>
+                <button id="submitButtonIcon" type="submit" class="btn btn-dark slider-icon"><h4 class="slider-icon-txt">✅</h4></button>
+            </div>
+            <script type="text/javascript" src="{{ url_for('static', filename='scripts/onSave.js') }}"></script>
+      {% endif %}
     </div>
   </div>
 

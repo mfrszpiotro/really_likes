@@ -1,47 +1,118 @@
-
-
-.slider-btn{
-    height: 80px;
-    width: 77%;
-    background-color: #292929 !important;
-    border-color: white !important;
+/* For mobile phones: */
+.slider-title {
+  margin-right: 60px;
+  font-weight: bold !important;
 }
 
-.slider-icon{
-    height: 80px;
-    width: 20%;
-    background-color: #292929 !important;
-    border-color: white !important;
+.slider-icon-txt {
+  font-size: 30px;
 }
 
-.slider-abs{
+.slider-btn {
+  height: 80px;
+  width: 77%;
+  background-color: #292929 !important;
+  border-color: white !important;
+}
+
+.slider-icon {
+  height: 80px;
+  width: 20%;
+  background-color: #292929 !important;
+  border-color: white !important;
+}
+
+.slider-abs {
+  position: absolute;
+  width: 90%;
+  margin-left: 25px;
+  margin-right: -25px;
+}
+
+#slide {
+  transition: left 0.4s ease-in-out;
+  -o-transition: left 0.4s ease-in-out;
+  -ms-transition: left 0.4s ease-in-out;
+  -moz-transition: left 0.4s ease-in-out;
+  -webkit-transition: left 0.4s ease-in-out;
+  background-color: #a50000;
+  width: 320px;
+  height: 100%;
+  z-index: 999;
+  top: 0;
+  left: -270px;
+  position: fixed;
+  background: #292929;
+  box-shadow: 5px 5px 9px #cccccc,
+    -5px -5px 9px #cccccc;
+}
+
+#toggle {
+  position: absolute;
+  padding: 10px;
+  background: #ccc;
+}
+
+#slide:hover {
+  left: -30px;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .slider-title {
+    margin-right: 60px;
+    font-weight: bold !important;
+  }
+  
+  .slider-icon-txt {
+    font-size: 50px;
+  }
+  
+  .slider-btn {
+    height: 80px;
+    width: 67%;
+    background-color: #292929 !important;
+    border-color: white !important;
+  }
+  
+  .slider-icon {
+    height: 80px;
+    width: 30%;
+    font-size: 60px;
+    background-color: #292929 !important;
+    border-color: white !important;
+  }
+  
+  .slider-abs {
     position: absolute;
     width: 90%;
   }
-
-#slide{
+  
+  #slide {
     transition: left 0.4s ease-in-out;
     -o-transition: left 0.4s ease-in-out;
     -ms-transition: left 0.4s ease-in-out;
     -moz-transition: left 0.4s ease-in-out;
     -webkit-transition: left 0.4s ease-in-out;
     background-color: #a50000;
-    width: 240px;
+    width: 320px;
     height: 100%;
     z-index: 999;
-    top:0;
-    left: -200px;
+    top: 0;
+    left: -240px;
     position: fixed;
-    border-radius: 20px;
     background: #292929;
-    box-shadow:  5px 5px 9px #272727,
-                 -5px -5px 9px #2b2b2b; 
+    box-shadow: 5px 5px 9px #cccccc,
+      -5px -5px 9px #cccccc;
   }
-  #toggle{
+  
+  #toggle {
     position: absolute;
     padding: 10px;
-    background: #ccc; 
+    background: #ccc;
   }
-  #slide:hover{
+  
+  #slide:hover {
     left: -30px;
   }
+}

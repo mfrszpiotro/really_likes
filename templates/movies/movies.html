@@ -3,10 +3,10 @@
 {% block content %}
 <div class="abs">
   <div class="rel">
-    <p>Co Natka myśli o Kunderach?</p>
+    <p>Filmy kunderskie</p>
   </div>
   <div class="search-carousel">
-    <form class="form-inline" id="search" name="search" method="POST">
+    <form id="search" name="search" method="POST">
       {{ search_form.csrf_token }}
       <div class="input-group">
         {{ search_form.search_text(class_="form-search-text form-control", placeholder_="Szukaj", value=request.args.get('search', '')) }}
@@ -25,7 +25,7 @@
 
       <!-- Indicators/dots -->
       <div class="carousel-indicators">
-        {% for book in books %}
+        {% for film in films %}
         <button type="button" data-bs-target="#carousel" data-bs-slide-to="{{ loop.index-1 }}"
           class="{% if loop.index == 1 %} active {% endif %}"></button>
         {% endfor %}
@@ -34,26 +34,29 @@
       <!-- The slideshow/carousel -->
       <div class="carousel-inner">
         <form method="POST" id="descriptions" name="descriptions">
-          {% for book in books %}
+          {% for film in films %}
           <div class="carousel-item {% if loop.index == 1 %} active {% endif %}">
             <div class="in-carousel flex">
-              <img src="{{ static_link(book.img) }}" alt="For title '{{book.name}}' cover was not found" class="d-block cover">
+              <div class="image-container cover">
+                <img class="poster d-block cover" src="{{ api_link(film.img) }}">
+                <div class="gradient-layer"></div>
+                <div class="description">{{film.orig_title}}, {{film.year}}, {{film.runtime}}'</div>
+              </div>
               <div class="descr">
-                {{ ckeditor.create(name=book.id, value=book.descr) }}
+                {{ ckeditor.create(name=film.id, value=film.descr) }}
               </div>
             </div>
-          </div>  
+          </div>
           {% endfor %} {{ ckeditor.load() }}
           {% if not session.get("logged", False) %}
-            {% for book in books %}
-              {{ ckeditor.config(name=book.id, height=300, custom_config="uiColor: '#FFFFFF', readOnly: 1") }}
+            {% for film in films %}
+              {{ ckeditor.config(name=film.id, height=300, custom_config="uiColor: '#FFFFFF', readOnly: 1") }}
             {% endfor %}
           {% else %}
-            {% for book in books %}
-              {{ ckeditor.config(name=book.id, height=300, custom_config="uiColor: '#058F68', readOnly: 0") }}
+            {% for film in films %}
+              {{ ckeditor.config(name=film.id, height=300, custom_config="uiColor: '#058F68', readOnly: 0") }}
             {% endfor %}
-          {% endif %} 
-
+          {% endif %}
         </form>
       </div>
 
@@ -71,8 +74,4 @@
   </div>
 
 </div>
-</div>
-
-
-
 {% endblock %}

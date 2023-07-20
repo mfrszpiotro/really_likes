@@ -1,0 +1,14 @@
+{% extends 'appbase.html' %}
+
+{% block content %}
+
+    <form id="login" name="login" method="POST" class="form-inline ps-5">
+      {{ login_form.csrf_token }}
+        <div class="form-group pb-2">
+          <label class="" for="pass"><p class="small-text">Jesteś Natką? Wprowadź hasło:</p></label>
+          {{ login_form.password(class_="form-control") }}
+        </div>
+        {{ login_form.login(class_="btn btn-dark") }}
+    </form>
+
+{% endblock %}

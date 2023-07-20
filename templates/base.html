@@ -7,9 +7,13 @@
             {% block styles %}
                 <title>Natkapp®</title>
                 <link rel="icon" href="{{ url_for('static', filename='images/fav3.png') }}">
-                <link rel="stylesheet" href="{{ url_for('static', filename='styles/natkappstyles.css') }}">
+                <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
                 <link rel="stylesheet" href="{{ url_for('static', filename='styles/flashes.css') }}">
                 <link rel="stylesheet" href="{{ url_for('static', filename='styles/slider.css') }}">
+                <link rel="stylesheet" href="{{ url_for('static', filename='styles/tables.css') }}">
+                <link rel="stylesheet" href="{{ url_for('static', filename='styles/carousel.css') }}">
+                <link rel="stylesheet" href="{{ url_for('static', filename='styles/image-hover.css') }}">
+                <link rel="stylesheet" href="{{ url_for('static', filename='styles/font-awesome.min.css') }}">
                 {{ bootstrap.load_css() }}
             {% endblock %}
         {% endblock %}
@@ -20,6 +24,7 @@
         {% block content %}{% endblock %}
         {% block scripts %}
             {{ bootstrap.load_js() }}
+            {{ ckeditor.load(pkg_type="standard") }}
         {% endblock %}
     </body>
 </html>
