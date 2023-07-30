@@ -3,7 +3,7 @@ from flask import request, render_template, url_for, redirect, flash, session
 from app.movies.forms import SearchForm
 from unidecode import unidecode
 from app.extensions import db
-from models import Movie, commit_diff_descr
+from app.movies.models import Movie, commit_diff_descr
 
 
 @bp.route("/movies", methods=["GET", "POST"])

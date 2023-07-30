@@ -31,9 +31,9 @@ def create_app(config_class=Config):
     from app.movies import bp as movies_bp
     from app.music import bp as music_bp
 
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(movies_bp)
-    app.register_blueprint(music_bp)
+    app.register_blueprint(auth_bp, url_prefix="/auth")
+    app.register_blueprint(movies_bp, url_prefix="/movies")
+    app.register_blueprint(music_bp, url_prefix="/music")
 
     @app.route("/")
     def index():
